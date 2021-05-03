@@ -1,0 +1,7 @@
+build
+node_modules
+*.lock
+*package-lock.json
+
+# exclude onyl settings, cause we need launch.json
+.vscode/settings.json
