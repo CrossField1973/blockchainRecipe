@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Locksite</title>
+    <script type="text/javascript" src="index.js"></script>
+
+    <style>
+        img {
+            width: 800px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        form {
+            border: 1px groove black;
+            margin: 50px;
+            align-content: center;
+            padding: 20px;
+        }
+
+        div>pre {
+            align-self: center;
+            align-items: center;
+            margin-left: auto;
+            display: block;
+            font-family: "courier new", courier, monospace;
+            font-size: 30px;
+        }
+
+        button {
+            margin: 20px;
+        }
+
+        div.scrollmenu {
+            margin-top: 100px;
+            background-color: #666;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+            background-color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: 50px;">
+        <pre id="hasId" visibility="hidden">Please register ID: </pre>
+    </div>
+    <form id="registerForm" hidden onsubmit="Lock.registerLock(document.getElementById('registerLock_id_f').value)">
+        Lock id: <input type="text" onsubmit="" id="registerLock_id_f">
+        <button type="submit">Submit</button>
+    </form>
+
+    <form id="unlockForm" hidden onsubmit="Lock.verifyOwner(document.getElementById('unlock_id_f').value)">
+        <textarea id="unlock_id_f" placeholder="TimeStamp with signature" rows="4" cols="60"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="unlocked_indication" hidden>
+        <div style=" text-align: center;">
+            <h1 id="lock_text">Unlocked !</h1>
+            <button id="lock_button" style="font-size: 30px;">Lock</button>
+            <button style="font-size: 30px;" onclick="location.reload()">Delete ID</button>
+        </div>
+        <img src="./public/castle-1290860_1920.jpg" alt="unlocked lock" , sizes="" id="lock_image">
+    </div>
+
+    <footer>
+        <div class="scrollmenu">
+            <a href="https://github.com/LucK1Y/Padlock-Token">Project Page </a></a>
+            <a href="https://github.com/LucK1Y/Padlock-Token/blob/master/lockSite/lockSite_README.md">Help Page</a>
+        </div>
+    </footer>
+</body>
+</html>
