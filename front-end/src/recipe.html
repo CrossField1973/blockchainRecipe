@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Rezept erstellen</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <form class="m-5">
+            <div class="form-group">
+                <label for="typ">Rezepttyp</label>
+                <select class="form-control" id="typ">
+                    <option value="">Rezeptart auswählen</option>
+                    <option value=1>Kassenrezept - rosa</option>
+                    <option value=2>Privatrezept - blau</option>
+                    <option value=3>BTM-REZEPT - gelb</option>
+                    <option value=4>T-Rezept - weiss</option>
+                    <option value=5>Entlassrezept - rosa</option>
+                    <option value=6>Arztempfehlung - grün</option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label for="adresse_arzt">Adresse Arzt</label>
+            <input type="text" class="form-control" id="adresse_arzt" placeholder="0x1a7fEc1000fc2F962a63E275D2a64A2502992952">
+            </div>
+            <div class="form-group">
+                <label for="adresse_patient">Adresse Patient</label>
+                <input type="text" class="form-control" id="adresse_patient" placeholder="0x1a7fEc1000fc2F962a63E275D2a64A2502992952">
+            </div>
+            <div class="form-group">
+                <label for="adresse_krankenkasse">Adresse Krankenkasse</label>
+                <input type="text" class="form-control" id="adresse_krankenkasse" placeholder="0x1a7fEc1000fc2F962a63E275D2a64A2502992952">
+            </div>
+            <div class="form-group">
+                <label for="spezialisierung">Spezialisierung Arzt</label>
+                <select class="form-control" id="spezialisierung">
+                    <option value="">Spezialisierung auswählen</option>
+                    <option value=1>Innere und Allgemeinmedizin - Hausarzt</option>
+                    <option value=2>Anästhesist</option>
+                    <option value=3>Anatomie</option>
+                    <option value=4>Arbeitsmediziner</option>
+                    <option value=5>Ophthalmologe</option>
+                    <option value=6>Biochemie</option>
+                    <option value=7>Chirurgie</option>
+                    <option value=8>Gynäkologe</option>
+                    <option value=9>Hals-Nasen-Ohren-Heilkunde</option>
+                    <option value=10>Dermatologe und Venerologe</option>
+                    <option value=11>Humangenetik</option>
+                    <option value=12>Hygiene und Umweltmedizin</option>
+                    <option value=13>Internist</option>
+                    <option value=14>Pädiatrie</option>
+                    <option value=15>Kinder und Jugendpsychiatrie und –psychotherapie</option>
+                    <option value=16>Klinische Chemie</option>
+                    <option value=17>Mikrobiologie, Virologie und Infektionsepidemiologie</option>
+                    <option value=18>Mund-Kiefer-Gesichts-Chirurgie</option>
+                    <option value=19>Neurochirurgie</option>
+                    <option value=20>Neurologie</option>
+                    <option value=21>Nuklearmedizin</option>
+                    <option value=22>Öffentliches Gesundheitswesen</option>
+                    <option value=23>Pathologe</option>
+                    <option value=24>Pharmakologie und Toxikologie</option>
+                    <option value=25>Physikalische und Rehabilitative Medizin</option>
+                    <option value=26>Physiologie</option>
+                    <option value=27>Psychiatrie und Psychotherapie</option>
+                    <option value=28>Psychosomatische Medizin</option>
+                    <option value=29>Radiologie</option>
+                    <option value=30>Rechtsmedizin</option>
+                    <option value=31>Strahlentherapie</option>
+                    <option value=32>Transfusionsmedizin</option>
+                    <option value=33>Urologie</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="land">Land</label>
+                <input type="text" class="form-control" id="land">
+            </div>
+            <div class="form-group">
+                <label for="plz">Postleitzahl</label>
+                <input type="number" class="form-control" id="plz">
+            </div>
+            <div class="form-group">
+                <label for="stadt">Stadt</label>
+                <input type="text" class="form-control" id="stadt">
+            </div>
+            <div class="form-group">
+                <label for="straße">Straße</label>
+                <input type="text" class="form-control" id="straße">
+            </div>
+            <div class="form-group">
+                <label for="nr">Hausnummer</label>
+                <input type="number" class="form-control" id="nr">
+            </div>
+            <div class="form-group">
+                <label for="datum">Datum</label>
+                <input type="date" class="form-control" id="datum">
+            </div>
+            <div class="form-group">
+                <label for="medikament">Medikamentname</label>
+                <input type="text" class="form-control" id="medikament">
+            </div>
+            <div class="form-group">
+                <label for="aggregat">Aggregat</label>
+                <select class="form-control" id="aggregat">
+                    <option value="">Aggregatzustand auswählen</option>
+                    <option value=1>Tropfen</option>
+                    <option value=2>Salbe</option>
+                    <option value=3>Tablette</option>
+                    <option value=4>Pulver oder Granulat</option>
+                    <option value=5>Extrakt</option>
+                    <option value=6>Saft oder Sirup</option>
+                    <option value=7>Infusion oder Injektion</option>
+                    <option value=8>Pflaster</option>
+                    <option value=9>Pulver-Inhalatoren oder Dosier-Aerosole</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="menge">Menge</label>
+                <input type="number" class="form-control" id="menge">
+                <select class="form-control" id="typ">
+                    <option value="">Art der Menge</option>
+                    <option value=1>mg</option>
+                    <option value=2>ml</option>
+                    <option value=3>Stück</option>
+                </select>
+            </div>
+        </form>
+        <form action="index.html">
+            <input class="btn btn-secondary ml-5" type="submit" value="Abbrechen"/>
+        </form>
+        <form action="index.html">
+            <input class="btn btn-success ml-5 mt-2 mb-5" type="submit" value="Bestätigen"/>
+        </form>
+    </body>
+</html>

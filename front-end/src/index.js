@@ -168,3 +168,11 @@ function loadForm() {
     }
   }
 }
+
+function loggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect('/index.html');
+  }
+}
