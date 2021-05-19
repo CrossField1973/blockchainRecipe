@@ -1,7 +1,7 @@
 const Migrations = artifacts.require("Migrations");
-const PadlockToken = artifacts.require("PadlockToken");
+const PadlockToken = artifacts.require("PrescriptionToken");
 
 module.exports = function (deployer) {
   deployer.deploy(Migrations);
-  deployer.deploy(PadlockToken);
+  deployer.deploy(PrescriptionToken);
 };

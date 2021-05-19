@@ -1,6 +1,6 @@
-const PadlockToken = artifacts.require("PadlockToken");
+const PrescriptionToken = artifacts.require("PrescriptionToken");
 
-contract("PadlockToken", (accounts) => {
+contract("PrescriptionToken", (accounts) => {
 
   // setup accounts
   const alice = accounts[0];
@@ -16,7 +16,7 @@ contract("PadlockToken", (accounts) => {
   let instance;
 
   beforeEach(async () => {
-    instance = await PadlockToken.deployed();
+    instance = await PrescriptionToken.deployed();
   });
 
   /**
