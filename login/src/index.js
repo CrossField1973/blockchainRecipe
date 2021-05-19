@@ -1,18 +1,15 @@
-var mysql = require('mysql');
-var express = require('express');
-var session = require('express-session');
+// var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-// hier kommt die eigentliche Datenbankverbindung (keine mysql)
-var connection = mysql.createConnection({
-	host     : '',
-	user     : '',
-	password : '',
-	database : ''
-});
+import express from "express";
+import Web3 from "web3";
+import PadlockToken from "../../build/contracts/PadlockToken.json"; 
+
+
 
 var app = express();
+
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -29,16 +26,16 @@ app.post('/auth', function(request, response) {
 	var username = request.body.username;
 	var password = request.body.password;
 	if (username && password) {
-		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
-			if (results.length > 0) {
-				request.session.loggedin = true;
-				request.session.username = username;
-				response.redirect('/home');
-			} else {
-				response.send('Incorrect Username and/or Password!');
-			}			
-			response.end();
-		});
+		// connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+		// 	if (results.length > 0) {
+		// 		request.session.loggedin = true;
+		// 		request.session.username = username;
+		// 		response.redirect('/home');
+		// 	} else {
+		// 		response.send('Incorrect Username and/or Password!');
+		// 	}			
+		// 	response.end();
+		// });
 	} else {
 		response.send('Please enter Username and Password!');
 		response.end();
@@ -54,4 +51,4 @@ app.get('/home', function(request, response) {
 	response.end();
 });
 
-app.listen(3000);
+app.listen(8080);

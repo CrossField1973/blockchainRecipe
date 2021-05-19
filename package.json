@@ -13,6 +13,7 @@
     "dev": "truffle develop",
     "locksite": "cd lockSite  && webpack-dev-server --port 4000",
     "chainsite": "cd chainRegistration && webpack-dev-server",
+    "login": "cd login && webpack-dev-server",
     "cli": "node sign-cli/sign-cli.js"
   },
   "repository": {
@@ -27,18 +28,18 @@
   "homepage": "https://github.com/LucK1Y/Padlock-Token/wiki",
   "devDependencies": {
     "ganache-cli": "^6.12.0",
-    "truffle": "^5.1.47"
+    "truffle": "^5.1.47",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "copy-webpack-plugin": "^4.6.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "openpgp": "^4.10.8",
     "web3": "^1.3.0",
     "web3-eth": "^1.3.0",
-    "copy-webpack-plugin": "^4.6.0",
     "webpack": "^4.28.1",
-    "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
   }
 }
