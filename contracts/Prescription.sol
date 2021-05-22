@@ -112,7 +112,7 @@ contract PrescriptionToken {
         }
     }
     
-
+    // Rezept erstellen
     function mint(address _from, address _to, uint256 _tokenId, string memory _drugName, string memory _drugForm, string memory _drugQuantity, string memory _prescriptionColor) external {
         require(physiciansIndex[_from] == true);
         require(patientsIndex[_to] == true);
@@ -136,11 +136,13 @@ contract PrescriptionToken {
         prescriptionsIndex[tmpId] = tmpPrescription;
     }
 
+    // Rezepte holen 
     function drugdataOf(uint256 _tokenId) external view returns (string memory drugName, string memory drugForm, string memory drugQuantity) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.drugName, tmpPrescription.drugForm, tmpPrescription.drugQuantity);
     }
 
+    // Rezepte holen (gibt Farbe und Datum wieder)
     function prescriptiondataOf(uint256 _tokenId) external view returns (uint prescriptionDate, string memory prescriptionColor) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.prescriptionDate, tmpPrescription.prescriptionColor);

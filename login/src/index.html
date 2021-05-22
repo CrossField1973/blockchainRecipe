@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html>
+
     <head>
-        <title>Login</title>
+        <title>Rezept erstellen</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script type="text/javascript" src="index.js"></script>
     </head>
+
     <body>
-        <div class="card">
-            <article class="card-body">
-                <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
-                <hr>
-                <form action="auth" method="POST">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-user"></i></span>
-                            </div>
-                            <input name="username" class="form-control" placeholder="Email" type="email">
-                        </div>
-                    </div> 
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                            </div>
-                            <input class="form-control" name="password" placeholder="Passwort" type="password">
-                        </div> 
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div> 
-                </form>
-            </article>
-        </div>
-        <form action="../index.html">
-            <input class="btn btn-secondary ml-5 mt-3" type="submit" value="Abbrechen"/>
+        <details id="details" open></details>
+        <form class="m-5" onsubmit="App.createDrug()">
+            <div class="form-group">
+                <label for="typ">Rezepttyp</label>
+                <select class="form-control" id="typ">
+                    <option value="">Rezeptart auswählen</option>
+                    <option value=1>Kassenrezept - rosa</option>
+                    <option value=2>Privatrezept - blau</option>
+                    <option value=3>BTM-REZEPT - gelb</option>
+                    <option value=4>T-Rezept - weiss</option>
+                    <option value=5>Entlassrezept - rosa</option>
+                    <option value=6>Arztempfehlung - grün</option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label for="adresse_arzt">Adresse Arzt</label>
+            <input type="text" class="form-control" id="adresse_arzt" placeholder="0x1a7fEc1000fc2F962a63E275D2a64A2502992952" required>
+            </div>
+            <div class="form-group">
+                <label for="adresse_patient">Adresse Patient</label>
+                <input type="text" class="form-control" id="adresse_patient" placeholder="0x1a7fEc1000fc2F962a63E275D2a64A2502992952" required>
+            </div>     
+            <div class="form-group">
+                <label for="medikament">Medikamentname</label>
+                <input type="text" class="form-control" id="medikament" required>
+            </div>
+            <div class="form-group">
+                <label for="aggregat">Aggregat</label>
+                <select class="form-control" id="aggregat">
+                    <option value="" required>Aggregatzustand auswählen</option>
+                    <option value=1 required>Tropfen</option>
+                    <option value=2 required>Salbe</option>
+                    <option value=3 required>Tablette</option>
+                    <option value=4 required>Pulver oder Granulat</option>
+                    <option value=5 required>Extrakt</option>
+                    <option value=6 required>Saft oder Sirup</option>
+                    <option value=7 required>Infusion oder Injektion</option>
+                    <option value=8 required>Pflaster</option>
+                    <option value=9 required>Pulver-Inhalatoren oder Dosier-Aerosole</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="menge">Menge</label>
+                <input type="number" class="form-control" id="menge" required>
+            </div>
+            <button type="submit" class="btn btn-success ml-5 mt-2 mb-5">Bestätigen</button>
         </form>
-        <script src="index.js"></script> 
+        <form>
+            <input class="btn btn-secondary ml-5" type="submit" value="Abbrechen"/>
+        </form>
     </body>
 </html>
