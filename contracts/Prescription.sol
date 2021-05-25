@@ -3,7 +3,7 @@ pragma solidity ^0.8.4;
 contract PrescriptionToken {
     address owner;
 
-    mapping(uint256 => Prescription) prescriptionsIndex;
+    mapping(string => Prescription) prescriptionsIndex;
 
     mapping(address => bool) patientsIndex;
     mapping(address => bool) physiciansIndex;
@@ -13,7 +13,7 @@ contract PrescriptionToken {
     struct Prescription {
 
         // Contractically unique id of the token
-        uint256 tokenId;
+        string tokenId;
 
         // Addresses linked with contract
         address ownerAddress;
@@ -45,7 +45,7 @@ contract PrescriptionToken {
     }
 
     // Per norm
-    function ownerOf(uint256 _tokenId) external view returns (address) {
+    function ownerOf(string memory _tokenId) external view returns (address) {
 
     }
 
@@ -88,19 +88,19 @@ contract PrescriptionToken {
         }
     }
 
-    function affiliateOf(uint256 _tokenId) external view returns (address, address, address, address) {
+    function affiliateOf(string memory _tokenId) external view returns (address, address, address, address) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.prescriberAddress, tmpPrescription.receiverAddress, tmpPrescription.pharmacyAddress, tmpPrescription.healthInsuranceCompanyAddress);
     }
 
-    function terminate(uint256 _tokenId) external returns (bool) {
+    function terminate(string memory) external returns (bool) {
         // If insuranceCompanyAddress == ownerAddress -> delete Token
 
         // Else return false
     }
 
     // Per norm
-    function transferFrom(address _from, address _to, uint256 _tokenId) external payable {
+    function transferFrom(address _from, address _to, string memory _tokenId) external payable {
         require(msg.sender == prescriptionsIndex[_tokenId].ownerAddress);
 
         if(patientsIndex[_from] && pharmaciesIndex[_to] == true) {
@@ -113,14 +113,13 @@ contract PrescriptionToken {
     }
     
     // Rezept erstellen
-    function mint(address _from, address _to, uint256 _tokenId, string memory _drugName, string memory _drugForm, string memory _drugQuantity, string memory _prescriptionColor) external {
+    function mint(address _from, address _to, string memory _tokenId, string memory _drugName, string memory _drugForm, string memory _drugQuantity, string memory _prescriptionColor) external {
         require(physiciansIndex[_from] == true);
         require(patientsIndex[_to] == true);
-        require(prescriptionsIndex[_tokenId].tokenId != 0);
+        require(bytes(prescriptionsIndex[_tokenId].tokenId).length != 0);
         
-        uint256 tmpId = 0;
         Prescription memory tmpPrescription = Prescription({
-            tokenId:tmpId, 
+            tokenId:_tokenId, 
             ownerAddress:_to, 
             prescriberAddress:_from, 
             receiverAddress:_to, 
@@ -133,17 +132,17 @@ contract PrescriptionToken {
             prescriptionColor:_prescriptionColor
         });
         
-        prescriptionsIndex[tmpId] = tmpPrescription;
+        prescriptionsIndex[_tokenId] = tmpPrescription;
     }
 
     // Rezepte holen 
-    function drugdataOf(uint256 _tokenId) external view returns (string memory drugName, string memory drugForm, string memory drugQuantity) {
+    function drugdataOf(string memory _tokenId) external view returns (string memory drugName, string memory drugForm, string memory drugQuantity) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.drugName, tmpPrescription.drugForm, tmpPrescription.drugQuantity);
     }
 
     // Rezepte holen (gibt Farbe und Datum wieder)
-    function prescriptiondataOf(uint256 _tokenId) external view returns (uint prescriptionDate, string memory prescriptionColor) {
+    function prescriptiondataOf(string memory _tokenId) external view returns (uint prescriptionDate, string memory prescriptionColor) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.prescriptionDate, tmpPrescription.prescriptionColor);
     }

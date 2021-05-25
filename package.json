@@ -28,12 +28,13 @@
   "homepage": "https://github.com/LucK1Y/Padlock-Token/wiki",
   "devDependencies": {
     "ganache-cli": "^6.12.0",
-    "truffle": "^5.1.47",
+    "truffle": "^5.3.7",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "copy-webpack-plugin": "^4.6.0",
+    "ethers": "^5.2.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "openpgp": "^4.10.8",

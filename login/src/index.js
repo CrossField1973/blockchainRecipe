@@ -1,8 +1,6 @@
-var bodyParser = require('body-parser');
-var path = require('path');
-
 import Web3 from "web3";
-import PrescriptionToken from "../../bin/contracts/PrescriptionToken.json"; 
+import PrescriptionToken from "../../build/contracts/PrescriptionToken.json"; 
+import { ethers, utils } from 'ethers';
 
 let generated_id = ""
 
@@ -45,8 +43,8 @@ const App = {
 
 	createDrug: async function() {
 		const typ = document.getElementById("typ").value
-		const adresse_arzt = document.getElementById("adresse_arzt").value
-		const adresse_patient = document.getElementById("adresse_patient").value
+		const adresse_arzt = utils.getAddress(document.getElementById("adresse_arzt").value)
+		const adresse_patient = utils.getAddress(document.getElementById("adresse_patient").value)
 		const medikament = document.getElementById("medikament").value
 		const aggregat = document.getElementById("aggregat").value
 		const menge = document.getElementById("menge").value
