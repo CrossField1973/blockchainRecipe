@@ -14,6 +14,7 @@
     "locksite": "cd lockSite  && webpack-dev-server --port 4000",
     "chainsite": "cd chainRegistration && webpack-dev-server",
     "login": "cd login && webpack-dev-server",
+    "overview": "cd overview && webpack-dev-server",
     "cli": "node sign-cli/sign-cli.js"
   },
   "repository": {

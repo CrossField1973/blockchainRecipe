@@ -39,26 +39,14 @@ const App = {
 	  }
 	},
   
-	
 
-	createDrug: async function() {
-		const typ = document.getElementById("typ").value
-		const adresse_arzt = utils.getAddress(document.getElementById("adresse_arzt").value)
-		const adresse_patient = utils.getAddress(document.getElementById("adresse_patient").value)
-		const medikament = document.getElementById("medikament").value
-		const aggregat = document.getElementById("aggregat").value
-		const menge = document.getElementById("menge").value
-
-		generateID();
-
-		const { mint } = this.prescription.methods;
-		const tx = await mint(adresse_patient, adresse_arzt, generated_id, medikament, aggregat, menge, typ).send({ from: this.account })
-
-		if (tx.status) {
-			alert("Drug created")  
-		} else {
-			alert("Error")
-		}
+	getDrugs: async function() {
+		const tx = await drugdataOf(generated_id)
+		tx = [
+			["Kopfscherzdablette", "fest", "2"],
+			["Hustensaft", "flüssig", "2ml"]
+		]
+		return tx;
 	},
 };
 
