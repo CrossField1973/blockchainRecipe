@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Rezeptuebersicht</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <style>
+            .bg-danger {
+                background-color: purple !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form class="m-5" onsubmit="App.getDrugs()">
+            <!--
+            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header" id="header">Privatrezept - blau</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some content.</p>
+                  <p class="card-text">Some other content.</p>
+                </div>
+            </div>
+            -->
+            <div id="target">
+            <!-- all divs will append here -->
+            </div>
+            <button type="submit" class="btn btn-success ml-5 mt-2 mb-5">Bestätigen</button>
+        </form>
+        <form>
+            <input class="btn btn-secondary ml-5" type="submit" value="Abbrechen"/>
+        </form>
+        <script>
+            //tx = App.getDrugs();
+            tx = [
+			    ["Kassenrezept - rosa", "Kopfscherztablette", "fest", "2"],
+			    ["Privatrezept - blau", "Hustensaft", "flüssig", "2ml"]
+		    ]
+            document.write(tx[0][0])
+        
+            var i = 0;
+            for(; i <= tx.length - 1; i++){
+                $('#target').append('<div id="'+ i +'" class="card text-dark bg-warning mb-3" style="max-width: 18rem;"><div class="card-header" id="header">' + tx[i][0] + '</div><div class="card-body"><h5 class="card-title">' + tx[i][1] + '</h5><p class="card-text">' + tx[i][2] + '</p><p class="card-text">' + tx[i][3] + '</p></div></div>')
+            }
+
+            for (d = 0; d < i; d++) {
+                var el = document.getElementById(d);
+                var val = el.firstChild.textContent;
+                var class_name;
+                if (val == "Privatrezept - blau") {
+                    class_name = 'text-white bg-primary';
+                } else if (val == 'Kassenrezept - rosa') {
+                    class_name = 'text-white bg-danger';
+                } else if (val == 'BTM-REZEPT - gelb') {
+                    class_name = 'text-dark bg-warning';
+                } else if (val == 'T-Rezept - weiss') {
+                    class_name = 'text-dark bg-light';
+                } else if (val == 'Entlassrezept - rosa') {
+                    class_name = 'text-white bg-danger';
+                } else if (val == 'Arztempfehlung - grün') {
+                    class_name = 'text-white bg-success';
+                } else {
+                    class_name = 'text-white bg-dark';
+                }
+                el.className = 'card ' + class_name + ' mb-3';
+            }
+        </script>
+    </body>
+</html>
