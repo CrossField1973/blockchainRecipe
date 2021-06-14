@@ -100,14 +100,14 @@ contract PrescriptionToken {
 
     // Per norm
     function transferFrom(string memory _from, string memory _to, string memory _tokenId) external payable {
-        require(msg.sender == prescriptionsIndex[_tokenId].ownerAddress);
+        //require(msg.sender == prescriptionsIndex[_tokenId].ownerAddress);
 
         if(pharmaciesIndex[_to] == true) {
-            prescriptionsIndex[_tokenId].ownerstring = _to;
-            prescriptionsIndex[_tokenId].pharmacystring = _to;
+            prescriptionsIndex[_tokenId].ownerAddress = _to;
+            prescriptionsIndex[_tokenId].pharmacyAddress = _to;
         } else if (pharmaciesIndex[_from] == true && healthInsuranceCompaniesIndex[_to] == true) {
-            prescriptionsIndex[_tokenId].ownerstring = _to;
-            prescriptionsIndex[_tokenId].healthInsuranceCompanystring = _to;
+            prescriptionsIndex[_tokenId].ownerAddress = _to;
+            prescriptionsIndex[_tokenId].healthInsuranceCompanyAddress = _to;
         }
     }
     
@@ -121,8 +121,8 @@ contract PrescriptionToken {
             ownerAddress:_to, 
             prescriberAddress:_from, 
             receiverAddress:_to, 
-            pharmacyAddress:address(0),
-            healthInsuranceCompanyAddress:address(0),
+            pharmacyAddress:"0",
+            healthInsuranceCompanyAddress:"0",
             drugName:_drugName, 
             drugForm:_drugForm, 
             drugQuantity:_drugQuantity, 

@@ -13,7 +13,7 @@
     "dev": "truffle develop",
     "locksite": "cd lockSite  && webpack-dev-server --port 4000",
     "chainsite": "cd chainRegistration && webpack-dev-server",
-    "webside": "cd webside && webpack-dev-server",
+    "website": "cd website && webpack-dev-server",
     "cli": "node sign-cli/sign-cli.js"
   },
   "repository": {
