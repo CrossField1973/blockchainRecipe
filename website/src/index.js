@@ -43,6 +43,8 @@ const App = {
 	
 
 	createDrug: async function() {
+		const { verifyPhysician } = this.prescription.methods;
+
 		const typ = document.getElementById("typ").value
 		const adresse_arzt = utils.getAddress(document.getElementById("adresse_arzt").value)
 		const adresse_patient = utils.getAddress(document.getElementById("adresse_patient").value)
@@ -53,7 +55,7 @@ const App = {
 		generateID();
 
 		const { mint } = this.prescription.methods;
-		const tx = await mint(adresse_patient, adresse_arzt, generated_id, medikament, aggregat, menge, typ).send({ from: this.account })
+		tx = await mint(adresse_patient, adresse_arzt, generated_id, medikament, aggregat, menge, typ).send({ from: this.account })
 
 		if (tx.status) {
 			alert("Drug created")  

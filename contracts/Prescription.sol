@@ -57,7 +57,6 @@ contract PrescriptionToken {
     // Verify that account belongs to verified physician
     function verifyPhysician(string memory _user) external returns (bool) {
         require(msg.sender == owner);
-
         physiciansIndex[_user] = true;
 
         if(physiciansIndex[_user] == true) {
