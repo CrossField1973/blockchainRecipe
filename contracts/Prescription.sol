@@ -5,7 +5,6 @@ contract PrescriptionToken {
 
     mapping(string => Prescription) prescriptionsIndex;
 
-    mapping(string => bool) patientsIndex;
     mapping(string => bool) physiciansIndex;
     mapping(string => bool) pharmaciesIndex;
     mapping(string => bool) healthInsuranceCompaniesIndex;
@@ -40,13 +39,13 @@ contract PrescriptionToken {
     }
 
     // Per norm
-    function balanceOf(string _owner) external view returns (uint256[] memory) {
-
+    function balanceOf(string _owner) external view returns (uint256[] memory) returns (Prescription[]) {
+        return prescriptionsIndex[_owner];
     }
 
     // Per norm
-    function ownerOf(string memory _tokenId) external view returns (address) {
-
+    function ownerOf(string memory _tokenId) external view returns (string) {
+        return prescriptionsIndex[_tokenId].owner;
     }
 
     // Verify that account belongs to verified physician
@@ -88,22 +87,16 @@ contract PrescriptionToken {
         }
     }
 
-    function affiliateOf(string memory _tokenId) external view returns (address, address, address, address) {
+    function affiliateOf(string memory _tokenId) external view returns (string, string, string, string) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.prescriberAddress, tmpPrescription.receiverAddress, tmpPrescription.pharmacyAddress, tmpPrescription.healthInsuranceCompanyAddress);
-    }
-
-    function terminate(string memory) external returns (bool) {
-        // If insuranceCompanystring == ownerstring -> delete Token
-
-        // Else return false
     }
 
     // Per norm
     function transferFrom(string _from, string _to, string memory _tokenId) external payable {
         require(msg.sender == prescriptionsIndex[_tokenId].ownerAddress);
 
-        if(patientsIndex[_from] && pharmaciesIndex[_to] == true) {
+        if(pharmaciesIndex[_to] == true) {
             prescriptionsIndex[_tokenId].ownerstring = _to;
             prescriptionsIndex[_tokenId].pharmacystring = _to;
         } else if (pharmaciesIndex[_from] == true && healthInsuranceCompaniesIndex[_to] == true) {
@@ -115,7 +108,6 @@ contract PrescriptionToken {
     // Rezept erstellen
     function mint(string _from, string _to, string memory _tokenId, string memory _drugName, string memory _drugForm, string memory _drugQuantity, string memory _prescriptionColor) external {
         require(physiciansIndex[_from] == true);
-        require(patientsIndex[_to] == true);
         require(bytes(prescriptionsIndex[_tokenId].tokenId).length != 0);
         
         Prescription memory tmpPrescription = Prescription({
@@ -135,17 +127,15 @@ contract PrescriptionToken {
         prescriptionsIndex[_tokenId] = tmpPrescription;
     }
 
-    // Rezepte holen 
+    // Gibt Informationen über das verschiebene Medikaments zurück
     function drugdataOf(string memory _tokenId) external view returns (string memory drugName, string memory drugForm, string memory drugQuantity) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.drugName, tmpPrescription.drugForm, tmpPrescription.drugQuantity);
     }
 
-    // Rezepte holen (gibt Farbe und Datum wieder)
+    // Gibt Informationen über das Rezept zurück
     function prescriptiondataOf(string memory _tokenId) external view returns (uint prescriptionDate, string memory prescriptionColor) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.prescriptionDate, tmpPrescription.prescriptionColor);
     }
 }
-
-// To do id when minting
