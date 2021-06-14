@@ -29,11 +29,6 @@ const App = {
 		const accounts = await web3.eth.getAccounts();
 		this.account = accounts[0];
 		console.log("Choose account",this.account)
-
-		// console.log("Choose account",this.account)
-  
-		// logging for Smart Contract RegisterKeyEvent
-		// this.padLock.events.RegisterKeyEvent(console.log)
   
 	  } catch (error) {
 		console.error("Could not connect to contract or chain. ", error);
