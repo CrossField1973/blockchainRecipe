@@ -15,16 +15,6 @@
 
     <body>
         <form class="m-5" onsubmit="App.getDrugs()">
-            <!--
-            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-header" id="header">Privatrezept - blau</div>
-                <div class="card-body">
-                  <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">Some content.</p>
-                  <p class="card-text">Some other content.</p>
-                </div>
-            </div>
-            -->
             <div id="target">
             <!-- all divs will append here -->
             </div>
@@ -34,13 +24,8 @@
             <input class="btn btn-secondary ml-5" type="submit" value="Abbrechen"/>
         </form>
         <script>
-            //tx = App.getDrugs();
-            tx = [
-			    ["Kassenrezept - rosa", "Kopfscherztablette", "fest", "2"],
-			    ["Privatrezept - blau", "Hustensaft", "flüssig", "2ml"]
-		    ]
-            document.write(tx[0][0])
-        
+            tx = App.getDrugs();
+                  
             var i = 0;
             for(; i <= tx.length - 1; i++){
                 $('#target').append('<div id="'+ i +'" class="card text-dark bg-warning mb-3" style="max-width: 18rem;"><div class="card-header" id="header">' + tx[i][0] + '</div><div class="card-body"><h5 class="card-title">' + tx[i][1] + '</h5><p class="card-text">' + tx[i][2] + '</p><p class="card-text">' + tx[i][3] + '</p></div></div>')
