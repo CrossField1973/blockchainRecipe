@@ -42,10 +42,7 @@ const App = {
 
 	getDrugs: async function() {
 		const tx = await drugdataOf(generated_id)
-		tx = [
-			["Kopfscherzdablette", "fest", "2"],
-			["Hustensaft", "flüssig", "2ml"]
-		]
+		
 		return tx;
 	},
 };
