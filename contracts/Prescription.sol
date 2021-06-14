@@ -39,17 +39,23 @@ contract PrescriptionToken {
     }
 
     // Per norm
-    function balanceOf(string _owner) external view returns (uint256[] memory) returns (Prescription[]) {
-        return prescriptionsIndex[_owner];
+    function balanceOf(string memory _owner) external view returns (uint256[] memory) {
     }
 
     // Per norm
-    function ownerOf(string memory _tokenId) external view returns (string) {
-        return prescriptionsIndex[_tokenId].owner;
+    function ownerOf(string memory _tokenId) external view returns (string memory) {
+    }
+
+    function isOwnerOfContract() external  returns (bool) {
+        if(msg.sender == owner) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Verify that account belongs to verified physician
-    function verifyPhysician(string _user) external returns (bool) {
+    function verifyPhysician(string memory _user) external returns (bool) {
         require(msg.sender == owner);
 
         physiciansIndex[_user] = true;
@@ -62,7 +68,7 @@ contract PrescriptionToken {
     }
 
     // Verify that account belongs to verified pharmacy
-    function verifyPharmacy(string _user) external returns (bool) {
+    function verifyPharmacy(string memory _user) external returns (bool) {
         require(msg.sender == owner);
 
         pharmaciesIndex[_user] = true;
@@ -75,7 +81,7 @@ contract PrescriptionToken {
     }
 
     // Verify that account belongs to verified healthInsuranceCompany
-    function verifyHealthInsuranceCompany(string _user) external returns (bool) {
+    function verifyHealthInsuranceCompany(string memory _user) external returns (bool) {
         require(msg.sender == owner);
 
         healthInsuranceCompaniesIndex[_user] = true;
@@ -87,13 +93,13 @@ contract PrescriptionToken {
         }
     }
 
-    function affiliateOf(string memory _tokenId) external view returns (string, string, string, string) {
+    function affiliateOf(string memory _tokenId) external view returns (string memory, string memory, string memory, string memory) {
         Prescription memory tmpPrescription = prescriptionsIndex[_tokenId];
         return(tmpPrescription.prescriberAddress, tmpPrescription.receiverAddress, tmpPrescription.pharmacyAddress, tmpPrescription.healthInsuranceCompanyAddress);
     }
 
     // Per norm
-    function transferFrom(string _from, string _to, string memory _tokenId) external payable {
+    function transferFrom(string memory _from, string memory _to, string memory _tokenId) external payable {
         require(msg.sender == prescriptionsIndex[_tokenId].ownerAddress);
 
         if(pharmaciesIndex[_to] == true) {
@@ -106,7 +112,7 @@ contract PrescriptionToken {
     }
     
     // Rezept erstellen
-    function mint(string _from, string _to, string memory _tokenId, string memory _drugName, string memory _drugForm, string memory _drugQuantity, string memory _prescriptionColor) external {
+    function mint(string memory _from, string memory _to, string memory _tokenId, string memory _drugName, string memory _drugForm, string memory _drugQuantity, string memory _prescriptionColor) external {
         require(physiciansIndex[_from] == true);
         require(bytes(prescriptionsIndex[_tokenId].tokenId).length != 0);
         
