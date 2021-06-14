@@ -2,6 +2,7 @@ import Web3 from "web3";
 import PrescriptionToken from "../../build/contracts/PrescriptionToken.json"; 
 import { ethers, utils } from 'ethers';
 
+
 let generated_id = ""
 
 const App = {

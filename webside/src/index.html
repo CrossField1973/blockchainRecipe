@@ -9,7 +9,7 @@
 
     <body>
         <form class="m-5" onsubmit="App.createDrug()">
-            <div class="form-group">
+            <div class="form-group">    
                 <label for="typ">Rezepttyp</label>
                 <select class="form-control" id="typ">
                     <option value="">Rezeptart auswählen</option>
@@ -51,10 +51,10 @@
                 <label for="menge">Menge</label>
                 <input type="text" class="form-control" id="menge" required>
             </div>
-            <button type="submit" class="btn btn-success ml-5 mt-2 mb-5">Bestätigen</button>
+            <button type="submit" class="btn btn-success ml-5 mt-2 mb-2">Bestätigen</button>
         </form>
-        <form>
-            <input class="btn btn-secondary ml-5" type="submit" value="Abbrechen"/>
-        </form>
+       
+        <a class="btn btn-secondary ml-5" href="localhost:8080/overview.html">Rezeptübersicht</a>
+    
     </body>
 </html>
